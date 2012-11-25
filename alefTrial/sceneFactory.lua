@@ -127,7 +127,13 @@ function MarqoomLetterScene:new(letterIndex)
 	
 	function oScene:playAudioSound( event )
 		if event.phase=="began" then
-			playSound( event , "audio" .. myLettersArray[letterIndex]["letter"] .. ".mp3" )
+			playSound( event , "audio" .. myLettersArray[letterIndex]["letter"] .. ".aif" )
+		end
+	end
+
+	function oScene:helpVideo( event )
+		if event.phase == "ended" then
+			media.playVideo( "videoHelpAlef.mp4", false )
 		end
 	end
 	
@@ -140,7 +146,7 @@ function MarqoomLetterScene:new(letterIndex)
 	
 	function oScene:successDrawing( event ) 
 		-- Play ahsant audio
-		playSound(event, "audioAhsant.mp3")
+		playSound(event, "audioAhsant.aif")
 		analytics.logEvent( "Successfully Completed Drawing Letter" .. myLettersArray[letterIndex]["letter"] )
 		oScene:moveToNextLetter( event )
 	end
@@ -210,6 +216,10 @@ function MarqoomLetterScene:new(letterIndex)
 		self.audioButton.x = 100
 		self.audioButton.y = 100
 
+		self.helpButton = display.newImage("questionMark.png")	
+		self.helpButton.x = display.contentWidth - 95
+		self.helpButton.y = 720
+
 		self.homeButton = display.newImage("home.png")	
 		self.homeButton.x = display.contentWidth/2
 		self.homeButton.y = display.contentHeight - 100
@@ -238,6 +248,7 @@ function MarqoomLetterScene:new(letterIndex)
 		group:insert(self.prevButton)
 		group:insert(self.nextButton)
 		group:insert(self.board)
+		group:insert(self.helpButton)
 		group:insert(self.bear)
 
 	end
@@ -250,6 +261,9 @@ function MarqoomLetterScene:new(letterIndex)
 		letter.y = display.contentHeight/2 + myLettersArray[letterIndex]["letterXY"][2]
 		group:insert(letter)
 		
+		self.helpButton.touch = self.helpVideo
+		self.helpButton:addEventListener( "touch", self.helpButton)
+
 		self.homeButton.touch = self.goHome
 		self.homeButton:addEventListener( "touch", self.homeButton )
 		

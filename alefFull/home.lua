@@ -13,7 +13,7 @@ local startChannel
 
 local function onStartButtonTouch( self, event )
 	if event.phase == "ended" or event.phase == "cancelled" then
-		media.playVideo( "videoHelp.mp4", false, function() storyboard.gotoScene( "page" ) end )
+		media.playVideo( "videoHelpAlef.mp4", false, function() storyboard.gotoScene( "page" ) end )
 		return true	-- indicates successful touch
 	end
 end

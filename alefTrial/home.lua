@@ -1,7 +1,8 @@
 local storyboard = require( "storyboard" )
 local scene = storyboard.newScene("home")
 analytics = require ("analytics")
-analytics.init( "D4ZC32B9WQNBSDC95YVC" ) -- Android trial analytics key
+analytics.init( "TY9PTKDM7FBS6CRJVKXG" ) -- Apple versions
+-- local androidAnaly = "D4ZC32B9WQNBSDC95YVC" ) -- Android trial analytics key
 analytics.logEvent( "HomePage" )
 
 local startButton
@@ -12,7 +13,7 @@ local startChannel
 
 local function onStartButtonTouch( self, event )
 	if event.phase == "ended" or event.phase == "cancelled" then
-		storyboard.gotoScene( "page" )
+		media.playVideo( "videoHelpAlef.mp4", false, function() storyboard.gotoScene( "page" ) end )
 		return true	-- indicates successful touch
 	end
 end
