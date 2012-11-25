@@ -133,7 +133,7 @@ function MarqoomLetterScene:new(letterIndex)
 
 	function oScene:helpVideo( event )
 		if event.phase == "ended" then
-			media.playVideo( "videoHelp.mp4", false )
+			media.playVideo( "videoHelpAlef.mp4", false )
 		end
 	end
 	
@@ -216,9 +216,9 @@ function MarqoomLetterScene:new(letterIndex)
 		self.audioButton.x = 100
 		self.audioButton.y = 100
 
-		self.helpButton = display.newImage("home.png")	
-		self.helpButton.x = display.contentWidth/2 - 310
-		self.helpButton.y = display.contentHeight - 100
+		self.helpButton = display.newImage("questionMark.png")	
+		self.helpButton.x = display.contentWidth - 95
+		self.helpButton.y = 720
 
 		self.homeButton = display.newImage("home.png")	
 		self.homeButton.x = display.contentWidth/2
@@ -244,11 +244,11 @@ function MarqoomLetterScene:new(letterIndex)
 		group:insert(self.background)
 		group:insert(self.eraseButton)
 		group:insert(self.audioButton)
-		group:insert(self.helpButton)
 		group:insert(self.homeButton)
 		group:insert(self.prevButton)
 		group:insert(self.nextButton)
 		group:insert(self.board)
+		group:insert(self.helpButton)
 		group:insert(self.bear)
 
 	end
