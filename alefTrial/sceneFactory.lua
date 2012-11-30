@@ -127,7 +127,7 @@ function MarqoomLetterScene:new(letterIndex)
 	
 	function oScene:playAudioSound( event )
 		if event.phase=="began" then
-			playSound( event , "audio" .. myLettersArray[letterIndex]["letter"] .. ".aif" )
+			playSound( event , "audio" .. myLettersArray[letterIndex]["letter"] .. ".mp3" )
 		end
 	end
 
@@ -146,7 +146,7 @@ function MarqoomLetterScene:new(letterIndex)
 	
 	function oScene:successDrawing( event ) 
 		-- Play ahsant audio
-		playSound(event, "audioAhsant.aif")
+		playSound(event, "audioAhsant.mp3")
 		analytics.logEvent( "Successfully Completed Drawing Letter" .. myLettersArray[letterIndex]["letter"] )
 		oScene:moveToNextLetter( event )
 	end
